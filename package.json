@@ -26,8 +26,8 @@
 		"typescript": "^4.5.5"
 	},
 	"dependencies": {
-		"@mikro-orm/core": "^4.5.10",
-		"@mikro-orm/sqlite": "^4.5.10",
+		"@mikro-orm/core": "rc",
+		"@mikro-orm/sqlite": "rc",
 		"tslib": "2.x"
 	}
 }

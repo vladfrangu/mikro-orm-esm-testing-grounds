@@ -41,3 +41,4 @@ gh
 wiki/
 
 .env
+*.sqlite
