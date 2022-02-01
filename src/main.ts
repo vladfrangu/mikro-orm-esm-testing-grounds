@@ -1,6 +1,6 @@
 import { MikroORM } from '@mikro-orm/core';
 import type { SqliteDriver } from '@mikro-orm/sqlite';
-import { Hug } from './entities/Hug.js';
+import { Hug, MusicTitle } from './entities/Hug.js';
 
 console.log({ imports: process.env.MIKRO_ORM_DYNAMIC_IMPORTS });
 
@@ -17,9 +17,14 @@ await orm.getSchemaGenerator().updateSchema({
 });
 
 const hugOne = new Hug();
+hugOne.musicTitle = MusicTitle.One;
 const hugTwo = new Hug();
+hugTwo.musicTitle = MusicTitle.Two;
 
-await orm.em.fork().persistAndFlush([hugOne, hugTwo]);
+const hugInvalid = new Hug();
+hugInvalid.musicTitle = 69;
+
+await orm.em.fork().persistAndFlush([hugOne, hugTwo, hugInvalid]);
 const entities = await orm.em.fork().find(Hug, {});
 console.log(entities);
 
