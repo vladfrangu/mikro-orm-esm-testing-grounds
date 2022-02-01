@@ -1,11 +1,11 @@
-import { Entity, Enum, PrimaryKey } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
 @Entity()
 export class Hug {
 	@PrimaryKey()
 	public id!: number;
 
-	@Enum({ type: 'MusicTitle' })
+	@Property({ type: 'MusicTitle', enum: true } as any)
 	public musicTitle!: MusicTitle;
 }
 

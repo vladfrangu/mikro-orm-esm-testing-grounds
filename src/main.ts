@@ -1,11 +1,14 @@
 import { MikroORM } from '@mikro-orm/core';
+import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import type { SqliteDriver } from '@mikro-orm/sqlite';
 import { Hug, MusicTitle } from './entities/Hug.js';
 
 console.log({ imports: process.env.MIKRO_ORM_DYNAMIC_IMPORTS });
 
 const orm = await MikroORM.init<SqliteDriver>({
-	entities: ['./dist/entities'],
+	entities: ['./dist/entities/**/*.js'],
+	entitiesTs: ['./src/entities/**/*.ts'],
+	metadataProvider: TsMorphMetadataProvider,
 	dbName: 'owo.sqlite',
 	type: 'sqlite',
 	// baseDir: dirname(fileURLToPath(import.meta.url)),

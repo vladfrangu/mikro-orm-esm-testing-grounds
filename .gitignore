@@ -42,3 +42,4 @@ wiki/
 
 .env
 *.sqlite
+temp/
